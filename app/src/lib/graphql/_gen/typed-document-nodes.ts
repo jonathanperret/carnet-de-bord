@@ -12681,6 +12681,7 @@ export type GetDeploymentNotebooksQuery = {
 	notebooks: Array<{
 		__typename?: 'notebook';
 		id: string;
+		notebookInfo?: { __typename?: 'notebook_info'; needOrientation: boolean } | null;
 		beneficiary: {
 			__typename?: 'beneficiary';
 			firstname: string;
@@ -13360,6 +13361,7 @@ export type GetNotebookByBeneficiaryIdQuery = {
 			__typename?: 'wanted_job';
 			rome_code: { __typename?: 'rome_code'; id: string; label: string };
 		}>;
+		notebookInfo?: { __typename?: 'notebook_info'; needOrientation: boolean } | null;
 		beneficiary: {
 			__typename?: 'beneficiary';
 			address1?: string | null;
@@ -13513,6 +13515,7 @@ export type GetNotebookByIdQuery = {
 			__typename?: 'wanted_job';
 			rome_code: { __typename?: 'rome_code'; id: string; label: string };
 		}>;
+		notebookInfo?: { __typename?: 'notebook_info'; needOrientation: boolean } | null;
 		beneficiary: {
 			__typename?: 'beneficiary';
 			address1?: string | null;
@@ -13659,6 +13662,7 @@ export type NotebookFragmentFragment = {
 		__typename?: 'wanted_job';
 		rome_code: { __typename?: 'rome_code'; id: string; label: string };
 	}>;
+	notebookInfo?: { __typename?: 'notebook_info'; needOrientation: boolean } | null;
 	beneficiary: {
 		__typename?: 'beneficiary';
 		address1?: string | null;
@@ -14079,6 +14083,7 @@ export type GetNotebookQuery = {
 		contractSignDate?: string | null;
 		contractStartDate?: string | null;
 		contractEndDate?: string | null;
+		notebookInfo?: { __typename?: 'notebook_info'; needOrientation: boolean } | null;
 		wantedJobs: Array<{
 			__typename?: 'wanted_job';
 			rome_code: { __typename?: 'rome_code'; id: string; label: string };
@@ -14797,6 +14802,14 @@ export const NotebookFragmentFragmentDoc = {
 									},
 								},
 							],
+						},
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'notebookInfo' },
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [{ kind: 'Field', name: { kind: 'Name', value: 'needOrientation' } }],
 						},
 					},
 					{ kind: 'Field', name: { kind: 'Name', value: 'geographicalArea' } },
@@ -16456,7 +16469,7 @@ export const GetProfessionalsFromStructuresDocument = {
 											fields: [
 												{
 													kind: 'ObjectField',
-													name: { kind: 'Name', value: 'firstname' },
+													name: { kind: 'Name', value: 'lastname' },
 													value: { kind: 'EnumValue', value: 'asc' },
 												},
 											],
@@ -16466,7 +16479,7 @@ export const GetProfessionalsFromStructuresDocument = {
 											fields: [
 												{
 													kind: 'ObjectField',
-													name: { kind: 'Name', value: 'lastname' },
+													name: { kind: 'Name', value: 'firstname' },
 													value: { kind: 'EnumValue', value: 'asc' },
 												},
 											],
@@ -17754,6 +17767,16 @@ export const GetDeploymentNotebooksDocument = {
 							kind: 'SelectionSet',
 							selections: [
 								{ kind: 'Field', name: { kind: 'Name', value: 'id' } },
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'notebookInfo' },
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{ kind: 'Field', name: { kind: 'Name', value: 'needOrientation' } },
+										],
+									},
+								},
 								{
 									kind: 'Field',
 									name: { kind: 'Name', value: 'beneficiary' },
@@ -21656,7 +21679,7 @@ export const GetProfessionalsForStructureDocument = {
 											fields: [
 												{
 													kind: 'ObjectField',
-													name: { kind: 'Name', value: 'firstname' },
+													name: { kind: 'Name', value: 'lastname' },
 													value: { kind: 'EnumValue', value: 'asc' },
 												},
 											],
@@ -21666,7 +21689,7 @@ export const GetProfessionalsForStructureDocument = {
 											fields: [
 												{
 													kind: 'ObjectField',
-													name: { kind: 'Name', value: 'lastname' },
+													name: { kind: 'Name', value: 'firstname' },
 													value: { kind: 'EnumValue', value: 'asc' },
 												},
 											],
@@ -23921,6 +23944,16 @@ export const GetNotebookDocument = {
 								{ kind: 'Field', name: { kind: 'Name', value: 'contractSignDate' } },
 								{ kind: 'Field', name: { kind: 'Name', value: 'contractStartDate' } },
 								{ kind: 'Field', name: { kind: 'Name', value: 'contractEndDate' } },
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'notebookInfo' },
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{ kind: 'Field', name: { kind: 'Name', value: 'needOrientation' } },
+										],
+									},
+								},
 								{
 									kind: 'Field',
 									name: { kind: 'Name', value: 'wantedJobs' },
